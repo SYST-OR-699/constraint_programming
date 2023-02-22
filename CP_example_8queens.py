@@ -7,6 +7,7 @@ Created on Thu Feb  9 12:38:01 2023
 
 from ortools.sat.python import cp_model
 
+
 def queens_problem(board_size):
     model = cp_model.CpModel()
 
@@ -17,7 +18,7 @@ def queens_problem(board_size):
     for i in range(board_size):
         for j in range(i + 1, board_size):
             model.Add(queens[i] != queens[j])  # same row
-            model.Add(queens[i] + i != queens[j] + j)   # upper diagonal
+            model.Add(queens[i] + i != queens[j] + j)  # upper diagonal
             model.Add(queens[i] - i != queens[j] - j)  # lower diagonal
 
     # Solve
@@ -26,6 +27,8 @@ def queens_problem(board_size):
 
     # Print solution
     result = [solver.Value(queens[i]) for i in range(board_size)]
+    # model.ExportToFile(file="queens.lp")  # Trying get this to write an .lp file, but it's coming out as gibberish
     return result
+
 
 print(queens_problem(8))
