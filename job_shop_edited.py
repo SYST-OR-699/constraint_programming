@@ -5,12 +5,12 @@ from ortools.sat.python import cp_model
 
 # enter the data
 jobs_data = [  # task = (machine_id, processing_time).
-    [("Find", 57), ("PED", 5), ("Fix", 5), ("PED2", 1), ("Track1", 5)],  # sea_large_1
-    [("Find", 57), ("PED", 5), ("Fix", 5), ("PED2", 1), ("Track1", 5)],  # sea_small_1
+    [("fighter_4th", 57), ("fighter_4th", 5), ("fighter_4th", 5), ("fighter_4th", 1), ("fighter_4th", 5)],  # sea_large_1
+    [("fighter_5th", 50), ("fighter_5th", 5), ("fighter_5th", 5), ("fighter_5th", 1), ("fighter_5th", 5)],  # sea_small_1
     [("Find", 57), ("PED", 5), ("Fix", 5), ("PED2", 1), ("Track1", 5)]  # land_moving_1
 ]
 
-machines_count = 1 + max(task[0] for job in jobs_data for task in job)
+machines_count = 4
 all_machines = range(machines_count)
 all_jobs = range(len(jobs_data))  # added this, because its used below with no other prior definition
 # Computes horizon dynamically as the sum of all durations.
